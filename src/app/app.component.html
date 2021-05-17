@@ -1,0 +1,75 @@
+<table style="width:100%">
+  <thead>
+    <tr>
+      <th width="40">ID</th>
+      <th width="140">Name</th>
+      <th width="140">№ / %</th>
+      <th width="240">Type</th>
+      <th width="240">Owner</th>
+      <th width="140">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let key of keys(data)">
+      <td [ngClass]="{'disabled': data[key].isEdit}">{{ data[key].id }}</td>
+      <td>
+        <span *ngIf="!data[key].isEdit">{{ data[key].name }}</span>
+        <input *ngIf="data[key].isEdit" [formControl]="editableFormGroup.controls['name']">
+      </td>
+      <td [ngClass]="{'disabled': data[key].isEdit}">
+        <span *ngIf="!data[key].isSplit">{{ data[key].count }} / {{ data[key].count | percentage: data[key].price:totalPrice }}%</span>
+        <select *ngIf="data[key].isSplit" [(ngModel)]="splitTypeId">
+          <option *ngFor="let key of keys(splitTypes)" [value]="splitTypes[key].id" [selected]="splitTypeId === splitTypes[key].id">{{ splitTypes[key].name }}</option>
+        </select>
+      </td>
+      <td>
+        <span *ngIf="!data[key].isEdit">{{ data[key].type }}</span>
+        <select *ngIf="data[key].isEdit" [formControl]="editableFormGroup.controls['type']">
+          <option *ngFor="let type of stockTypes" [value]="type">{{ type }}</option>
+        </select>
+      </td>
+      <td>
+        <span *ngIf="!data[key].isEdit">{{ data[key].owner?.name }}</span>
+        <input *ngIf="data[key].isEdit" [formControl]="editableFormGroup.controls['ownerName']">
+      </td>
+      <td>
+        <span class="material-icons pointer mr-10" *ngIf="!data[key].isEdit && !data[key].isSplit" (click)="onEdit(data[key].id)">edit</span>
+        <span class="material-icons pointer mr-10" *ngIf="data[key].isEdit" (click)="onSave(data[key])">check</span>
+        <span class="material-icons pointer mr-10" *ngIf="!data[key].isEdit && !data[key].isSplit" (click)="data[key].isSplit = true">alt_route</span>
+        <span class="material-icons pointer mr-10" *ngIf="data[key].isSplit" (click)="onSplit(data[key].id, splitTypeId)">save</span>
+        <span class="material-icons pointer mr-10" *ngIf="data[key].isEdit || data[key].isSplit" (click)="onClear(data[key].id)">clear</span>
+        <span class="material-icons pointer ml-30" (click)="onDelete(data[key].id)">delete</span>
+      </td>
+    </tr>
+    <tr *ngIf="newStockFormGroup.value['id']">
+      <td>{{ newStockFormGroup.value['id'] }}</td>
+      <td>
+        <input type="text" [formControl]="newStockFormGroup.controls['name']">
+      </td>
+      <td>
+        <select [formControl]="newStockFormGroup.controls['count']">
+          <option *ngFor="let count of stockCounts">{{ count }}</option>
+        </select>
+      </td>
+      <td>
+        <select  [formControl]="newStockFormGroup.controls['type']">
+          <option *ngFor="let type of stockTypes" [value]="type">{{ type }}</option>
+        </select>
+      </td>
+      <td>
+        <input type="text" [formControl]="newStockFormGroup.controls['ownerName']">
+      </td>
+    </tr>
+  </tbody>
+  <tfoot>
+    <tr>
+      <td colspan="2">Total Price: {{ totalPrice }}</td>
+      <td colspan="3">Total Count: {{ total }}</td>
+      <td class="text-center">
+        <span class="material-icons pointer" *ngIf="!newStockFormGroup.value['id']" (click)="onAddShareholder()">add</span>
+        <span class="material-icons pointer" *ngIf="newStockFormGroup.value['id']" (click)="onSaveShareholder()">save</span>
+        <span class="material-icons pointer" *ngIf="newStockFormGroup.value['id']" (click)="onClear()">clear</span>
+      </td>
+    </tr>
+  </tfoot>
+</table>

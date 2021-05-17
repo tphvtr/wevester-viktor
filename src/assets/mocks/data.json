@@ -1,0 +1,112 @@
+[
+  {
+    "id": 1,
+    "name": "Name 1",
+    "count": 1000,
+    "price": 12,
+    "type": "COMMON",
+    "owner": {
+      "id": 1,
+      "name": "John Doe"
+    }
+  },
+  {
+    "id": 2,
+    "name": "Name 2",
+    "count": 500,
+    "price": 12,
+    "type": "COMMON",
+    "owner": {
+      "id": 2,
+      "name": "Dohn Joe"
+    }
+  },
+  {
+    "id": 3,
+    "name": "Name 3",
+    "count": 400,
+    "price": 12,
+    "type": "COMMON",
+    "owner": {
+      "id": 3,
+      "name": "Melon Tusk"
+    }
+  },
+  {
+    "id": 4,
+    "name": "Name 4",
+    "count": 100,
+    "price": 12,
+    "type": "COMMON",
+    "owner": {
+      "id": 4,
+      "name": "Viktor Topikha"
+    }
+  },
+  {
+    "id": 5,
+    "name": "Name 5",
+    "count": 1000,
+    "price": 12,
+    "type": "PREFERRED",
+    "owner": {
+      "id": 5,
+      "name": "Mary Sue"
+    }
+  },
+  {
+    "id": 6,
+    "name": "Name 6",
+    "count": 100,
+    "price": 12,
+    "type": "COMMON",
+    "owner": {
+      "id": 6,
+      "name": "Mary Stu"
+    }
+  },
+  {
+    "id": 7,
+    "name": "Name 7",
+    "count": 400,
+    "price": 12,
+    "type": "COMMON",
+    "owner": {
+      "id": 7,
+      "name": "John Jonson"
+    }
+  },
+  {
+    "id": 8,
+    "name": "Name 8",
+    "count": 500,
+    "price": 12,
+    "type": "COMMON",
+    "owner": {
+      "id": 8,
+      "name": "Pete Peterson"
+    }
+  },
+  {
+    "id": 9,
+    "name": "Name 9",
+    "count": 500,
+    "price": 12,
+    "type": "COMMON",
+    "owner": {
+      "id": 9,
+      "name": "Chad Chadwick"
+    }
+  },
+  {
+    "id": 10,
+    "name": "Name 10",
+    "count": 500,
+    "price": 12,
+    "type": "COMMON",
+    "owner": {
+      "id": 10,
+      "name": "Ivan Ivanov"
+    }
+  }
+]
